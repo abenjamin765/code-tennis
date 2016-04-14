@@ -1,0 +1,65 @@
+.users
+	width: 35%
+	float: left
+	ul
+		padding: 20px 20px 20px 0
+		li
+			position: relative
+			.user-info
+				z-index: 1
+				+clearfix
+				display: table
+				vertical-align: middle
+				width: 100%
+				.avatar
+					display: table-cell
+					+size(50px)
+					background: blue
+					border-radius: 50%
+					background:
+						position: center center
+						size: cover
+				.label
+					display: table-cell
+					vertical-align: middle
+					padding-left: 10px
+					.name
+						font-size: 16px
+					.location
+						font-size: 12px
+						color: #999
+				.status
+					display: table-cell
+					text-align: right
+					vertical-align: middle
+					text-transform: uppercase
+					font-size: 12px
+					.playing
+						font-style: italic
+						color: #999
+					.available
+						color: #333
+			.action
+				position: absolute
+				z-index: 2
+				background: $black
+				top: -10px
+				right: 0
+				bottom: -10px
+				left: 0
+				opacity: 0
+				border-radius: 5px
+				color: white
+				text-transform: uppercase
+				text-align: center
+				padding-top: 30px
+				font-weight: 900
+				font-size: 12px
+				+transition()
+				&:hover
+					opacity: 0.9
+					left: -10px
+					right: -10px
+					cursor: pointer
+			+ li
+				margin-top: 20px
