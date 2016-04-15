@@ -3,17 +3,19 @@ $primaryColor: #FFB700
 $primaryColor-dark: #F2AE00
 $black: #333
 
-// Tools
-@import 'tools/bourbon/bourbon'
-@import 'tools/reset'
-@import 'tools/normalize'
+// tools
+@import '0-tools/bourbon/bourbon'
+@import '0-tools/reset'
+@import '0-tools/normalize'
 
 // Base
-@import 'base/base.sass'
+@import '1-base/base.sass'
 
 
 // Modules
-@import 'modules/header'
-@import 'modules/feed'
-@import 'modules/users'
+@import '2-modules/header'
+@import '2-modules/feed'
+@import '2-modules/users'
 
+// Pages
+@import '3-pages/editor'

@@ -1,0 +1,40 @@
+doctype html
+html
+  include ./includes/editor-head.jade
+  
+  body#editor
+    #panels.panels
+      .controls
+        .button-group
+          for i in ['CSS','HTML','JS']
+            input.checkbox(id="show#{i}" 
+                           checked
+                           type="checkbox")
+            label.button(for="show#{i}") #{i}
+      .panel.css
+        .title
+          button.closePanel(type="button" data-toggle=".css") &times;
+          select#cssSelect
+            option(value="css") CSS
+            option(value="text/x-scss") SCSS
+            option(value="text/x-less") Less
+        textarea#areaCSS
+      .panel.html
+        .title
+          button.closePanel(type="button" data-toggle=".html") &times;
+          select#htmlSelect
+            option(value="text/html") HTML
+            option(value="jade") Jade
+            //option(value="haml") HAML
+        textarea#areaHTML
+      .panel.js
+        .title 
+          button.closePanel(type="button" data-toggle=".js") &times;
+          .select JS
+        textarea#areaJS
+      #bar
+       
+       
+    style#style
+    script#script
+    iframe#view.view foo
