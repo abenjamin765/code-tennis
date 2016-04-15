@@ -3,6 +3,8 @@
 
 var gulp = require('gulp'),
 	path = require('path'),
+  uglify = require('gulp-uglify'),
+  jshint = require('gulp-jshint'),
 	data = require('gulp-data'),
 	jade = require('gulp-jade'),
 	prefix = require('gulp-autoprefixer'),
@@ -15,7 +17,9 @@ var gulp = require('gulp'),
 var settings = {
 	publicDir: 'app',
 	sassDir: 'sass',
-	cssDir: 'app/css'
+	cssDir: 'app/css',
+  jsDir: 'js',
+  jsOutDir: 'app/js'
 };
 
 /**
@@ -67,11 +71,24 @@ gulp.task('sass', function () {
 });
 
 /**
+ * Move js files to public js directory with uglify and jshint
+ */
+gulp.task('js', function () {
+  return gulp.src(settings.jsDir + '/*.js')
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'))
+    .pipe(uglify())
+    .pipe(gulp.dest(settings.jsOutDir))
+    .pipe(browserSync.reload({stream: true}));
+});
+
+/**
  * Watch scss files for changes & recompile
  * Watch .jade files run jade-rebuild then reload BrowserSync
  */
 gulp.task('watch', function () {
 	gulp.watch(settings.sassDir + '/**', ['sass']);
+  gulp.watch(settings.jsDir + '/**', ['js']);
 	gulp.watch(['*.jade', '**/*.jade'], ['jade-rebuild']);
 });
 
