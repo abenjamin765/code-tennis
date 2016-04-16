@@ -1,0 +1,163 @@
+
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,400italic,300,700);
+@import url(http://fonts.googleapis.com/css?family=Inconsolata:400,700);
+$guttter-color: transparent; 
+
+body#editor {
+  background: #282828;
+  font-family: Roboto, sans-serif;
+}
+
+.inlet_slider {
+  z-index: 9999;
+}
+
+#bar {
+  flex: 0 0 100%;
+  height: 10px;
+  background: $guttter-color;
+}
+#panels {
+  opacity: 0;
+  display: flex;
+  flex-flow: wrap;
+  height: 50vh;
+  overflow: hidden;
+  
+  transition: opacity 1s;
+  
+  .loaded & {
+    opacity: 1;
+  }
+  
+  .controls {
+    position: relative;
+    height: 30px;
+    flex: 0 0 100%;
+    
+    .button-group {
+      display: inline-block;
+      margin: 5px 10px;
+      font-size: 0;
+      
+      .button {
+        box-shadow: inset 0 0 0 1px #333;
+        display: inline-block;
+        padding: 5px 10px;
+        height: 20px;
+        line-height: 1;
+        font-size: 10px;
+        box-sizing: border-box;
+        color: #898989;
+        background: #282828;
+        
+        
+        
+        &:last-of-type {
+          border-top-right-radius: 3px;
+          border-bottom-right-radius: 3px;
+        }
+        &:first-of-type {
+          border-top-left-radius: 3px;
+          border-bottom-left-radius: 3px;
+        }
+      }
+    
+      .checkbox {
+        position: absolute;
+        top: 0;
+        left: -30px;
+
+        &:checked + .button {
+          background: #111;
+          color: #fff;
+        }
+      }
+    }
+
+  }
+  
+  .panel {
+    flex: 1 1 30%;
+    border-right: 5px solid $guttter-color;
+    height: calc(100% - 40px);
+  
+    .CodeMirror {
+      height: calc(100% - 40px);
+      font-family: Inconsolata, monospace;
+      font-size: 16px;
+    }
+    &:last-child {
+      border: 0;
+    }
+    overflow: hidden;
+    
+    &.closed {
+      flex: 0 0 0;
+      height: 0;
+      border: 0;
+
+    }
+    
+    
+    .title {
+      padding: 10px;
+      line-height: 20px;
+      height: 20px;
+      position: relative;
+      background: #333;
+      color: #fff;
+      
+      button, select {
+        cursor: pointer;
+      }
+      
+      .select,
+      select {
+        display: inline-block;
+        box-sizing: border-box;
+        -webkit-appearance: none;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 10px;
+        font-size: 0.5em;
+        border-radius: 0;
+        color: #fff;
+        background: none;
+        border: 0;
+        box-shadow: 0;
+        outline: none!important;
+      }
+      
+      .closePanel {
+        position: absolute;
+        top: 0;
+        right: 0;
+        line-height: 20px;
+        font-size: 20px;
+        height: 20px;
+        width: 20px;
+        border: 0;
+        background: none;
+        color: white;
+        padding: 0;
+        font-family: Roboto;
+        font-weight: 300;
+        outline: none!important;
+      }
+      
+    }
+  }
+}
+#view {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  background: #fff;
+  height: 50vh;
+  width: 100%;
+}
+
